@@ -4,8 +4,8 @@ let snakeBody = [];
 let score = 0;
 
 function drawHighScore(amount) {
-    document.querySelector(".high-score")
-        .innerText = `High Score: ${amount}`;
+    document.querySelector("#hi-score")
+        .innerText = amount;
 }
 
 const updateFoodPosition = () => {
@@ -66,7 +66,7 @@ function handleNewIteration() {
 
     score++;
 
-    document.querySelector('.score').innerText = `Score: ${score}`;
+    document.querySelector('#score').innerText = score;
 
     highScore = score >= highScore ? score : highScore;
 
