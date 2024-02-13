@@ -1,4 +1,5 @@
-let snakeX = 5, snakeY = 5;
+document.addEventListener("DOMContentLoaded", ()=> {
+    let snakeX = 5, snakeY = 5;
 let velocityX = 0, velocityY = 0;
 let snakeBody = [];
 let score = 0;
@@ -143,3 +144,4 @@ document.addEventListener('snake:game_over', function (event) {
     alert('Игра окончена. Нажмите ОК, чтобы начать заново');
     location.reload();
 });
+})
