@@ -103,7 +103,7 @@ function restartGame() {
     score = 0;
     updateFoodPosition();
 
-    const modal = document.getElementById('myModal');
+    const modal = document.getElementById('game-over-modal');
     modal.style.display = 'none';
     document.intervalId = setInterval(initGame, 100);
     document.querySelector('#score').innerText = score;
@@ -162,7 +162,7 @@ document.addEventListener("DOMContentLoaded", ()=> {
     document.addEventListener('snake:game_over', function (event) {
         // TODO: 5. Включить обработку события завершения игры
         clearInterval(intervalId);
-        let modal = document.getElementById('myModal');
+        let modal = document.getElementById('game-over-modal');
         modal.style.display = 'flex';
         document.querySelector('#yourScore').innerText = score;
     });
