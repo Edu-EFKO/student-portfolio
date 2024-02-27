@@ -67,6 +67,7 @@ function handleNewIteration() {
     if (snakeX !== foodX || snakeY !== foodY) {
         return;
     }
+
     // TODO: 3. Включить обновление позиции еды
     updateFoodPosition();
 
@@ -90,6 +91,22 @@ function isSnakeHeadHitBody(snakeBody, i) {
 
 function isGameOver(snakeX, snakeY) {
     return snakeX <= 0 || snakeX > 30 || snakeY <= 0 || snakeY > 30
+}
+
+function restartGame() {
+    clearInterval(document.intervalId);
+    snakeX = 5;
+    snakeY = 5;
+    velocityX = 0;
+    velocityY = 0;
+    snakeBody = [];
+    score = 0;
+    updateFoodPosition();
+    
+    const modal = document.getElementById('game-over-modal');
+    modal.style.display = 'none';
+    document.intervalId = setInterval(initGame, 100);
+    document.querySelector('#score').innerText = score;
 }
 
 function renderSnake(body, positionX, positionY) {
@@ -145,7 +162,7 @@ document.addEventListener("DOMContentLoaded", ()=> {
     document.addEventListener('snake:game_over', function (event) {
         // TODO: 5. Включить обработку события завершения игры
         clearInterval(intervalId);
-        alert('Игра окончена. Нажмите ОК, чтобы начать заново');
-        location.reload();
+        let modal = document.getElementById('game-over-modal');
+        modal.style.display = 'block';
     });
 })
