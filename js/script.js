@@ -162,6 +162,8 @@ document.addEventListener("DOMContentLoaded", ()=> {
     document.addEventListener('snake:game_over', function (event) {
         // TODO: 5. Включить обработку события завершения игры
         clearInterval(intervalId);
+        velocityX = 0;
+        velocityY = 0;
         let modal = document.getElementById('game-over-modal');
         modal.style.display = 'flex';
         document.querySelector('#yourScore').innerText = score;
