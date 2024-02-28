@@ -102,7 +102,7 @@ function restartGame() {
     snakeBody = [];
     score = 0;
     updateFoodPosition();
-    
+
     const modal = document.getElementById('game-over-modal');
     modal.style.display = 'none';
     document.intervalId = setInterval(initGame, 100);
@@ -151,7 +151,7 @@ document.addEventListener("DOMContentLoaded", ()=> {
 
     document.querySelectorAll(".controls i")
         .forEach(button => button.addEventListener("click", () => changeDirection({ key: button.dataset.key })));
-        
+
     updateFoodPosition();
 
     const intervalId = setInterval(initGame, 100);
@@ -163,6 +163,7 @@ document.addEventListener("DOMContentLoaded", ()=> {
         // TODO: 5. Включить обработку события завершения игры
         clearInterval(intervalId);
         let modal = document.getElementById('game-over-modal');
-        modal.style.display = 'block';
+        modal.style.display = 'flex';
+        document.querySelector('#yourScore').innerText = score;
     });
 })
