@@ -16,6 +16,12 @@ function drawHighScore(amount) {
         .innerText = amount;
 }
 
+function openLostModal(){
+    let modal = document.getElementById('game-over-modal');
+    modal.style.display = 'flex';
+    document.querySelector('#yourScore').innerText = score;
+}
+
 const updateFoodPosition = () => {
     foodX = Math.floor(Math.random() * 30) + 1;
     foodY = Math.floor(Math.random() * 30) + 1;
@@ -128,6 +134,7 @@ const initGame = () => {
 
     if (isGameOver(snakeX, snakeY)) {
         document.dispatchEvent(new CustomEvent('snake:game_over'));
+        return;
     }
 
     let html = `<div class="food" style="grid-area: ${foodY} / ${foodX}"></div>`;
@@ -162,8 +169,6 @@ document.addEventListener("DOMContentLoaded", ()=> {
     document.addEventListener('snake:game_over', function (event) {
         // TODO: 5. Включить обработку события завершения игры
         clearInterval(intervalId);
-        let modal = document.getElementById('game-over-modal');
-        modal.style.display = 'flex';
-        document.querySelector('#yourScore').innerText = score;
+        openLostModal();
     });
 })
